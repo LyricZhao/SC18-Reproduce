@@ -18,7 +18,7 @@ ind = np.arange(len(bl))  # the x locations for the groups
 width = 0.2  # the width of the bars
 
 fig, ax = plt.subplots(figsize = (6, 3))
-plt.subplots_adjust(right = 0.91)
+# plt.subplots_adjust(right = 0.91)
 rects1 = ax.bar(ind - width * 1.0,   bl, width, color =   'SkyBlue', label =   'BL')
 rects2 = ax.bar(ind - width * 0.0, bl16, width, color = 'IndianRed', label = 'BL16')
 rects3 = ax.bar(ind + width * 1.0,   sc, width, color =      'Pink', label =   'SC')
@@ -54,5 +54,5 @@ autolabel(rects1, 'center', maxh)
 autolabel(rects2, 'center', maxh)
 autolabel(rects3, 'center', maxh)
 
-plt.savefig('Figure1.eps', format = 'eps', dpi = 1200)
+plt.savefig('Figure1.eps', format = 'eps', dpi = 1200, bbox_inches = 'tight')
 # plt.show()
