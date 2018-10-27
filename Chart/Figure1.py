@@ -15,9 +15,10 @@ for i in range(0, 4):
 	sc[i] = bl_time[i] / sc_time[i]
 
 ind = np.arange(len(bl))  # the x locations for the groups
-width = 0.25  # the width of the bars
+width = 0.2  # the width of the bars
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize = (6, 3))
+plt.subplots_adjust(right = 0.91)
 rects1 = ax.bar(ind - width * 1.0,   bl, width, color =   'SkyBlue', label =   'BL')
 rects2 = ax.bar(ind - width * 0.0, bl16, width, color = 'IndianRed', label = 'BL16')
 rects3 = ax.bar(ind + width * 1.0,   sc, width, color =      'Pink', label =   'SC')
@@ -35,7 +36,7 @@ def autolabel(rects, xpos='center', maxh = 0.2):
 
     for rect in rects:
         height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width() * offset[xpos], height - maxh, '%.2f' % height, ha = ha[xpos], va = 'bottom', fontsize = 10, rotation = 90.)
+        ax.text(rect.get_x() + rect.get_width() * offset[xpos], height - maxh, '%.2f' % height, ha = ha[xpos], va = 'bottom', fontsize = 9, rotation = 90.)
 
 def getmaxof(rects):
 	ret = 0
@@ -47,11 +48,11 @@ maxh = 0
 maxh = max(maxh, getmaxof(rects1))
 maxh = max(maxh, getmaxof(rects2))
 maxh = max(maxh, getmaxof(rects3))
-maxh *= 0.1
+maxh *= 0.15
 
 autolabel(rects1, 'center', maxh)
 autolabel(rects2, 'center', maxh)
 autolabel(rects3, 'center', maxh)
 
-plt.savefig('Figure1-1.eps', format = 'eps', dpi = 1200)
+plt.savefig('Figure1.eps', format = 'eps', dpi = 1200)
 # plt.show()
