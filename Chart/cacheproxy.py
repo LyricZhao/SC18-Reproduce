@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 plt.figure(figsize=(6,4))
 x = [4, 5, 6, 7]
+plt.xticks(x)
 
 # Baseline
 y = [0.1, 0.2, 0.3, 0.5]
