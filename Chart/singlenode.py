@@ -65,5 +65,5 @@ do_label(ax_gf, '%.0f', rects1, rects2)
 do_label(ax_su, '%.2f', rects3, rects4)
 
 
-plt.savefig('Figure2.eps', format = 'eps', dpi = 1200, bbox_inches = 'tight')
+plt.savefig('singlenode.eps', format = 'eps', dpi = 1200, bbox_inches = 'tight')
 # plt.show()

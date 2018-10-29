@@ -29,7 +29,7 @@ ax.set_xticks(ind)
 ax.set_xticklabels(('O4', 'O5', 'O6', 'O7'))
 ax.legend()
 
-def autolabel(rects, xpos='center', maxh = 0.2):
+def autolabel(rects, xpos = 'center', maxh = 0.2):
     xpos = xpos.lower()  # normalize the case of the parameter
     ha = {'center': 'center', 'right': 'left', 'left': 'right'}
     offset = {'center': 0.5, 'right': 0.57, 'left': 0.43}  # x_txt = x + w*off
@@ -54,5 +54,5 @@ autolabel(rects1, 'center', maxh)
 autolabel(rects2, 'center', maxh)
 autolabel(rects3, 'center', maxh)
 
-plt.savefig('Figure1.eps', format = 'eps', dpi = 1200, bbox_inches = 'tight')
+plt.savefig('neigh.eps', format = 'eps', dpi = 1200, bbox_inches = 'tight')
 # plt.show()
