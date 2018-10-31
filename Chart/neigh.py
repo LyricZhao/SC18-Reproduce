@@ -9,6 +9,10 @@ bl_time = [1 / 1.00, 1 / 1.00, 1 / 1.00, 1 / 1.00]
 bl16_time = [1 / 1.00, 1 / 1.02, 1 / 1.03, 1 / 1.06]
 sc_time = [1 / 1.02, 1 / 1.07, 1 / 1.26, 1 / 1.81]
 
+o_bl = [1.00, 1.00, 1.00, 1.00]
+o_bl16 = [1.00, 1.02, 1.03, 1.06]
+o_sc = [1.02, 1.07, 1.26, 1.81]
+
 for i in range(0, 4):
 	bl[i] =  bl_time[i] / bl_time[i]
 	bl16[i] =  bl_time[i] / bl16_time[i]
@@ -19,8 +23,13 @@ width = 0.2  # the width of the bars
 
 fig, ax = plt.subplots(figsize = (6, 3))
 # plt.subplots_adjust(right = 0.91)
+ax.plot([0 - width, 1 - width, 2 - width, 3 - width], o_bl, linewidth = 0, marker = '1', color = 'Black')
 rects1 = ax.bar(ind - width * 1.0,   bl, width, color =   'SkyBlue', label =   'BL')
+
+ax.plot([0, 1, 2, 3], o_bl16, linewidth = 0, marker = '1', color = 'Black')
 rects2 = ax.bar(ind - width * 0.0, bl16, width, color = 'IndianRed', label = 'BL16')
+
+ax.plot([0 + width, 1 + width, 2 + width, 3 + width], o_sc, linewidth = 0, marker = '1', color = 'Black')
 rects3 = ax.bar(ind + width * 1.0,   sc, width, color =      'Pink', label =   'SC')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
