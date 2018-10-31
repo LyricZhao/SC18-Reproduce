@@ -10,7 +10,7 @@ gflops/time
 NOTE: should be GTS>LTS,BL>SC
 '''
 
-fig, axes = plt.subplots(nrows = 1, ncols = 2, figsize = (6, 4))
+fig, axes = plt.subplots(nrows = 1, ncols = 2, figsize = (6, 5))
 plt.subplots_adjust(bottom = 0.24, right = 0.94)
 
 ax_flops = axes[0]
