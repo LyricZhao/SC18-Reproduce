@@ -6,9 +6,9 @@ bl = [0, 0, 0, 0]
 bl16 = [0, 0, 0, 0]
 sc = [0, 0, 0, 0]
 
-bl_time = np.array([read_result('../../fig2/bl_skx_%d.log' % i)['time'] for i in range(4, 8)])
-bl16_time = np.array([read_result('../../fig2/bl16_skx_%d.log' % i)['time'] for i in range(4, 8)])
-sc_time = np.array([read_result('../../fig2/sc_skx_%d.log' % i)['time'] for i in range(4, 8)])
+bl_time = np.array([read_result('./figs/fig2/bl_skx_%d.log' % i)['time'] for i in range(4, 8)])
+bl16_time = np.array([read_result('./figs/fig2/bl16_skx_%d.log' % i)['time'] for i in range(4, 8)])
+sc_time = np.array([read_result('./figs/fig2/sc_skx_%d.log' % i)['time'] for i in range(4, 8)])
 
 o_bl = [''] * 4
 o_bl16 = [''] * 4

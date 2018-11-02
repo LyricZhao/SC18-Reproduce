@@ -1,0 +1,25 @@
+Allocating fake data...
+...done
+
+done
+detected frequency (SEISSOL_PROXY_FREQUENCY): 2100.000000
+=================================================
+===            PERFORMANCE SUMMARY            ===
+=================================================
+seissol proxy mode                  : all
+time for seissol proxy              : 54.875369
+cycles                              : 115238274900.000000
+
+GFLOP (non-zero) for seissol proxy  : 39051.920304
+GFLOP (hardware) for seissol proxy  : 89575.200000
+GiB (estimate) for seissol proxy    : 4043.430090
+
+FLOPS/cycle (non-zero)              : 338.879772
+FLOPS/cycle (hardware)              : 777.304243
+Bytes/cycle (estimate)              : 37.674983
+
+GFLOPS (non-zero) for seissol proxy : 711.647521
+GFLOPS (hardware) for seissol proxy : 1632.338910
+GiB/s (estimate) for seissol proxy  : 73.683880
+=================================================
+

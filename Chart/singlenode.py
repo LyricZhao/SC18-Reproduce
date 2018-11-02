@@ -2,14 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from proxy_reader import read_result
 
-bl_gf = [read_result('../../fig3/bl_skx_%d.log' % i)['flops'] for i in range(4, 8)]
-sc_gf = [read_result('../../fig3/sc_skx_%d.log' % i)['flops'] for i in range(4, 8)]
+bl_gf = [read_result('./figs/fig3/bl_skx_%d.log' % i)['flops'] for i in range(4, 8)]
+sc_gf = [read_result('./figs/fig3/sc_skx_%d.log' % i)['flops'] for i in range(4, 8)]
 
 bl_su = [0, 0, 0, 0]
 sc_su = [0, 0, 0, 0]
 
-bl_time = [read_result('../../fig3/bl_skx_%d.log' % i)['time'] for i in range(4, 8)]
-sc_time = [read_result('../../fig3/sc_skx_%d.log' % i)['time'] for i in range(4, 8)]
+bl_time = [read_result('./figs/fig3/bl_skx_%d.log' % i)['time'] for i in range(4, 8)]
+sc_time = [read_result('./figs/fig3/sc_skx_%d.log' % i)['time'] for i in range(4, 8)]
 
 for i in range(0, 4):
     bl_su[i] = bl_time[i] / bl_time[i]
@@ -34,6 +34,7 @@ ax_gf.set_xticks(ind)
 ax_gf.set_xticklabels(('O4', 'O5', 'O6', 'O7'))
 ax_gf.legend()
 
+ax_su.set_ylim(0, 1.8)
 ax_su.set_ylabel('Speedup')
 ax_su.set_xticks(ind)
 ax_su.set_xticklabels(('O4', 'O5', 'O6', 'O7'))
@@ -54,16 +55,16 @@ def getmaxof(rects):
 		ret = max(ret, rect.get_height())
 	return ret
 
-def do_label(ax, fm, rectsA, rectsB):
+def do_label(ax, fm, rectsA, rectsB, mratio):
 	maxh = 0
 	maxh = max(maxh, getmaxof(rectsA))
 	maxh = max(maxh, getmaxof(rectsB))
-	maxh *= 0.2
+	maxh *= mratio
 	autolabel(ax, rectsA, fm, 'center', maxh)
 	autolabel(ax, rectsB, fm, 'center', maxh)
 
-do_label(ax_gf, '%.0f', rects1, rects2)
-do_label(ax_su, '%.2f', rects3, rects4)
+do_label(ax_gf, '%.0f', rects1, rects2, 0.2)
+do_label(ax_su, '%.2f', rects3, rects4, 0.25)
 
 
 plt.savefig('singlenode.eps', format = 'eps', dpi = 1200, bbox_inches = 'tight')
