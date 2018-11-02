@@ -2,34 +2,38 @@ import numpy as np
 import matplotlib.pyplot as plt
 from proxy_reader import read_result
 
-bl = [0, 0, 0, 0, 0]
-bl16 = [0, 0, 0, 0, 0]
-sc = [0, 0, 0, 0, 0]
+bl = [0, 0, 0, 0]
+bl16 = [0, 0, 0, 0]
+sc = [0, 0, 0, 0]
 
 bl_time = np.array([read_result('../../fig2/bl_skx_%d.log' % i)['time'] for i in range(4, 8)])
 bl16_time = np.array([read_result('../../fig2/bl16_skx_%d.log' % i)['time'] for i in range(4, 8)])
 sc_time = np.array([read_result('../../fig2/sc_skx_%d.log' % i)['time'] for i in range(4, 8)])
 
-for i in range(0, 4):
+o_bl = [''] * 4
+o_bl16 = [''] * 4
+o_sc = [''] * 4
+
+for i in range(4):
     bl[i] =  bl_time[i] / bl_time[i]
-    o_bl[i] = '%.2f' % bl[i]
+    o_bl[i] = float('%.2f' % bl[i])
     bl16[i] =  bl_time[i] / bl16_time[i]
-    o_bl16[i] = '%.2f' % bl16[i]
+    o_bl16[i] = float('%.2f' % bl16[i])
     sc[i] = bl_time[i] / sc_time[i]
-    o_sc[i] = '%.2f' % sc[i]
+    o_sc[i] = float('%.2f' % sc[i])
 
 ind = np.arange(len(bl))  # the x locations for the groups
 width = 0.2  # the width of the bars
 
 fig, ax = plt.subplots(figsize = (6, 3))
 # plt.subplots_adjust(right = 0.91)
-ax.plot([0 - width, 1 - width, 2 - width, 3 - width, 4 - width], o_bl, linewidth = 0, marker = '1', color = 'Black')
+ax.plot([i - width for i in range(4)], o_bl, linewidth = 0, marker = '1', color = 'Black')
 rects1 = ax.bar(ind - width * 1.0,   bl, width, color =   'SkyBlue', label =   'BL')
 
-ax.plot([0, 1, 2, 3, 4], o_bl16, linewidth = 0, marker = '1', color = 'Black')
+ax.plot([i for i in range(4)], o_bl16, linewidth = 0, marker = '1', color = 'Black')
 rects2 = ax.bar(ind - width * 0.0, bl16, width, color = 'IndianRed', label = 'BL16')
 
-ax.plot([0 + width, 1 + width, 2 + width, 3 + width, 4 + width], o_sc, linewidth = 0, marker = '1', color = 'Black')
+ax.plot([i + width for i in range(4)], o_sc, linewidth = 0, marker = '1', color = 'Black')
 rects3 = ax.bar(ind + width * 1.0,   sc, width, color =      'Pink', label =   'SC')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.

@@ -1,18 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from proxy_reader import read_result
 
-bl_gf = [340, 463, 558, 564]
-sc_gf = [356, 443, 553, 522]
+bl_gf = [read_result('../../fig3/bl_skx_%d.log' % i)['flops'] for i in range(4, 8)]
+sc_gf = [read_result('../../fig3/sc_skx_%d.log' % i)['flops'] for i in range(4, 8)]
 
 bl_su = [0, 0, 0, 0]
 sc_su = [0, 0, 0, 0]
 
-bl_time = [1 / 1.00, 1 / 1.00, 1 / 1.00, 1 / 1.00]
-sc_time = [1 / 1.02, 1 / 1.07, 1 / 1.26, 1 / 1.81]
+bl_time = [read_result('../../fig3/bl_skx_%d.log' % i)['time'] for i in range(4, 8)]
+sc_time = [read_result('../../fig3/sc_skx_%d.log' % i)['time'] for i in range(4, 8)]
 
 for i in range(0, 4):
-	bl_su[i] =  bl_time[i] / bl_time[i]
-	sc_su[i] = bl_time[i] / sc_time[i]
+    bl_su[i] = bl_time[i] / bl_time[i]
+    sc_su[i] = bl_time[i] / sc_time[i]
 
 ind = np.arange(len(bl_su))  # the x locations for the groups
 width = 0.2  # the width of the bars
