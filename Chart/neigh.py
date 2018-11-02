@@ -1,22 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from proxy_reader import read_result
 
 bl = [0, 0, 0, 0, 0]
 bl16 = [0, 0, 0, 0, 0]
 sc = [0, 0, 0, 0, 0]
 
-bl_time = [1 / 1.00, 1 / 1.00, 1 / 1.00, 1 / 1.00, 1 / 1.00]
-bl16_time = [1 / 1.00, 1 / 1.02, 1 / 1.03, 1 / 1.06, 1 / 1.06]
-sc_time = [1 / 1.02, 1 / 1.07, 1 / 1.26, 1 / 1.81, 1 / 1.81]
+bl_time = np.array([read_result('../../fig2/bl_skx_%d.log' % i)['time'] for i in range(4, 8)])
+bl16_time = np.array([read_result('../../fig2/bl16_skx_%d.log' % i)['time'] for i in range(4, 8)])
+sc_time = np.array([read_result('../../fig2/sc_skx_%d.log' % i)['time'] for i in range(4, 8)])
 
-o_bl = [1.00, 1.00, 1.00, 1.00, 1.00]
-o_bl16 = [1.00, 1.02, 1.03, 1.06, 1.06]
-o_sc = [1.02, 1.07, 1.26, 1.81, 1.81]
-
-for i in range(0, 5):
-	bl[i] =  bl_time[i] / bl_time[i]
-	bl16[i] =  bl_time[i] / bl16_time[i]
-	sc[i] = bl_time[i] / sc_time[i]
+for i in range(0, 4):
+    bl[i] =  bl_time[i] / bl_time[i]
+    o_bl[i] = '%.2f' % bl[i]
+    bl16[i] =  bl_time[i] / bl16_time[i]
+    o_bl16[i] = '%.2f' % bl16[i]
+    sc[i] = bl_time[i] / sc_time[i]
+    o_sc[i] = '%.2f' % sc[i]
 
 ind = np.arange(len(bl))  # the x locations for the groups
 width = 0.2  # the width of the bars
@@ -35,7 +35,7 @@ rects3 = ax.bar(ind + width * 1.0,   sc, width, color =      'Pink', label =   '
 # Add some text for labels, title and custom x-axis tick labels, etc.
 ax.set_ylabel('Speedup')
 ax.set_xticks(ind)
-ax.set_xticklabels(('O4', 'O5', 'O6', 'O7', 'O7/noHT'))
+ax.set_xticklabels(('O4', 'O5', 'O6', 'O7'))
 ax.legend()
 
 def autolabel(rects, xpos = 'center', maxh = 0.2):
