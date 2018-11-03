@@ -1,0 +1,18 @@
+Allocating fake data...
+...done
+
+=================================================
+===            PERFORMANCE SUMMARY            ===
+=================================================
+seissol proxy mode                  : all
+time for seissol proxy              : 31.744646
+GFLOP (libxsmm)                     : 0.000000
+GFLOP (non-zero) for seissol proxy  : 12212.687812
+GFLOP (hardware) for seissol proxy  : 35114.400000
+GiB (estimate) for seissol proxy    : 3527.104855
+
+GFLOPS (non-zero) for seissol proxy : 384.716459
+GFLOPS (hardware) for seissol proxy : 1106.151885
+GiB/s (estimate) for seissol proxy  : 111.108653
+=================================================
+
